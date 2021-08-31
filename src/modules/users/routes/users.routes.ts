@@ -22,5 +22,44 @@ usersRouter.post(
     usersController.create
 );
 
+usersRouter.get(
+    '/',
+    usersController.index
+);
+
+usersRouter.get(
+    '/:id',
+    celebrate({
+        [Segments.PARAMS]: {
+            id: Joi.string().uuid().required()
+        },
+    }),
+    usersController.show
+);
+
+usersRouter.delete(
+    '/:id',
+    celebrate({
+        [Segments.PARAMS]: {
+            id: Joi.string().uuid().required()
+        },
+    }),
+    usersController.delete
+);
+
+usersRouter.post(
+    '/:id',
+    celebrate({
+        [Segments.PARAMS]: {
+            id: Joi.string().uuid().required()
+        },
+        [Segments.BODY]: {
+            nome: Joi.string().required(),
+            email: Joi.string().required(),
+            senha: Joi.string().required(),
+        },
+    }),
+    usersController.update
+);
 
 export default usersRouter;

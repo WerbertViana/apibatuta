@@ -29,6 +29,10 @@ class CreateUserService {
       nome,
       email,
       senha,
+      vida: 3,
+      xp: 0,
+      batutas: 0,
+      elo: "ferro",
     });
 
     await usersRepository.save(user);
