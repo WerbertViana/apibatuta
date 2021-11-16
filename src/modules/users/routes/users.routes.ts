@@ -47,7 +47,7 @@ usersRouter.delete(
     usersController.delete
 );
 
-usersRouter.post(
+usersRouter.put(
     '/:id',
     celebrate({
         [Segments.PARAMS]: {
