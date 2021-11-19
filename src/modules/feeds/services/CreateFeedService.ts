@@ -4,12 +4,14 @@ import Feed from '../typeorm/entities/Feed';
 import FeedsRepository from '../typeorm/repositories/FeedsRepository';
 
 interface IRequest {
+  show_lesson: boolean;
+  show_feed: boolean;
   lesson: number;
   progress: boolean;
 }
 
 class CreateFeedService {
-  public async execute({ lesson, progress }: IRequest): Promise<Feed> {
+  public async execute({ lesson, progress, show_lesson, show_feed  }: IRequest): Promise<Feed> {
     
     const feedRepository = getCustomRepository(FeedsRepository);
     const feedExists = await feedRepository.findByLesson(lesson);
@@ -20,6 +22,8 @@ class CreateFeedService {
     }
 
     const feed = feedRepository.create({  
+      show_lesson,
+      show_feed,
       lesson,
       progress,
     });

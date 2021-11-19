@@ -9,6 +9,8 @@ feedsRouter.post(
     '/',
     celebrate({
         [Segments.BODY]: {
+            show_feed: Joi.boolean().required(),
+            show_lesson: Joi.boolean().required(),
             lesson: Joi.number().required(),
             progress: Joi.boolean().required(),
         },
@@ -29,6 +31,16 @@ feedsRouter.get(
         },
     }),
     feedsController.show
+);
+
+feedsRouter.get(
+    '/items/:id',
+    celebrate({
+        [Segments.PARAMS]: {
+            id: Joi.string().uuid().required()
+        },
+    }),
+    feedsController.items
 );
 
 feedsRouter.delete(

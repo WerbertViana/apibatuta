@@ -1,11 +1,11 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class CreateFeeds1635290123825 implements MigrationInterface {
+export class CreateQuestions1637292786161 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: 'feeds',
+                name: 'questions',
                 columns: [
                     {
                         name: 'id',
@@ -15,20 +15,25 @@ export class CreateFeeds1635290123825 implements MigrationInterface {
                         default: 'uuid_generate_v4()',
                     },
                     {
-                        name: 'lesson',
-                        type: 'int',
+                        name: 'name',
+                        type: 'varchar',
                     },
                     {
-                        name: 'progress',
-                        type: 'boolean',
+                        name: 'correct_alternative',
+                        type: 'varchar',
                     },
                     {
-                        name: 'show_lesson',
-                        type: 'boolean'
+                        name: 'correct_option',
+                        type: 'varchar',
                     },
                     {
-                        name: 'show_feed',
-                        type: 'boolean'
+                        name: 'levels',
+                        type: 'varchar',
+                    },
+                    {
+                        name: 'elo',
+                        type: 'varchar',
+                        isNullable: true,
                     },
                     {
                         name: 'created_at',
@@ -47,7 +52,7 @@ export class CreateFeeds1635290123825 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('feeds');
+        await queryRunner.dropTable('questions');
     }
 
 }

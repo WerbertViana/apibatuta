@@ -1,7 +1,8 @@
 import { Request, Response } from 'express';
 import CreateFeedService from '../services/CreateFeedService';
 import DeleteFeedService from '../services/DeleteFeedService';
-import ListFeedsService from '../services/ListarFeedsService';
+import ListFeedsService from '../services/ListFeedsService';
+import ListItemsService from '../services/ListItemsService';
 import ShowFeedService from '../services/ShowFeedService';
 import UpdateFeedService from '../services/UpdateFeedService';
 
@@ -11,13 +12,15 @@ export default class FeedsController {
  
   public async create(request: Request, response: Response): Promise<Response> {
         
-    const {lesson, progress} = request.body;
+    const {lesson, progress, show_feed, show_lesson} = request.body;
     
     const createFeed = new CreateFeedService();
 
     const feed = await createFeed.execute({
-        lesson,
-        progress
+      show_feed,
+      show_lesson,
+      lesson,
+      progress
     });
 
     return response.json(feed);
@@ -61,6 +64,19 @@ export default class FeedsController {
       id,
       lesson,
       progress
+    });
+
+    return response.json(feed);
+  }
+
+  public async items(request: Request, response: Response): Promise<Response> {
+
+    const {id} = request.params;
+
+    const listItems = new ListItemsService();
+
+    const feed = await listItems.execute({
+      id,
     });
 
     return response.json(feed);

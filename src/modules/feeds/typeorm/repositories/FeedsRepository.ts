@@ -24,6 +24,15 @@ class FeedsRepository extends Repository<Feed> {
     return feed;
   }
 
+  public async findByItems(id: string): Promise<Feed | undefined> {
+    const users = await this.findOne(id, {
+        relations: ['items'],
+    });
+
+    return users;
+  }
+
+
 }
 
 export default FeedsRepository;

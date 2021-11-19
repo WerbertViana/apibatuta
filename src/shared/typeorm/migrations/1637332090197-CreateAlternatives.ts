@@ -1,11 +1,11 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class CreateFeeds1635290123825 implements MigrationInterface {
+export class CreateAlternatives1637332090197 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: 'feeds',
+                name: 'alternatives',
                 columns: [
                     {
                         name: 'id',
@@ -15,20 +15,21 @@ export class CreateFeeds1635290123825 implements MigrationInterface {
                         default: 'uuid_generate_v4()',
                     },
                     {
-                        name: 'lesson',
-                        type: 'int',
+                        name: 'name',
+                        type: 'varchar',
                     },
                     {
-                        name: 'progress',
-                        type: 'boolean',
+                        name: 'image',
+                        type: 'varchar',
                     },
                     {
-                        name: 'show_lesson',
-                        type: 'boolean'
+                        name: 'option',
+                        type: 'varchar',
                     },
                     {
-                        name: 'show_feed',
-                        type: 'boolean'
+                        name: 'question_id',
+                        type: 'uuid',
+                        isNullable: true,
                     },
                     {
                         name: 'created_at',
@@ -40,14 +41,24 @@ export class CreateFeeds1635290123825 implements MigrationInterface {
                         type: 'timestamp with time zone',
                         default: 'now()',
                     }
-                ]
+                ],
+                foreignKeys: [
+                    {
+                        name: 'alternativeQuestion',
+                        referencedTableName: 'questions',
+                        referencedColumnNames: ['id'],
+                        columnNames: ['question_id'],
+                        onDelete: 'SET NULL',
+                        onUpdate: 'CASCADE',
+                    },
+                ],
 
             })
         );
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('feeds');
+        await queryRunner.dropTable('alternatives');
     }
 
 }
