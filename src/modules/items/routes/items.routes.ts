@@ -36,10 +36,10 @@ itemsRouter.get(
 );
 
 itemsRouter.delete(
-    '/:feed_id',
+    '/:id',
     celebrate({
         [Segments.PARAMS]: {
-            feed_id: Joi.string().uuid().required()
+            id: Joi.string().uuid().required()
         },
     }),
     itemsController.delete
