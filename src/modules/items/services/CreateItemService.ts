@@ -7,11 +7,10 @@ interface IRequest {
   feed_id: string;
   title: string;
   icon: string;
-  content: number;
 }
 
 class CreateItemService {
-  public async execute({ title, icon, content, feed_id }: IRequest): Promise<Items> {
+  public async execute({ title, icon, feed_id }: IRequest): Promise<Items> {
     
     const itemsRepository = getCustomRepository(ItemsRepository);
     const ItemExists = await itemsRepository.findByTitle(title);
@@ -25,7 +24,6 @@ class CreateItemService {
       feed_id,
       title,
       icon,
-      content,
       show_feed: false
     });
 

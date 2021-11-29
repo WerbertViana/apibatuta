@@ -1,4 +1,4 @@
-import {MigrationInterface, QueryRunner, Table} from "typeorm";
+import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
 export class CreateContent1638197238797 implements MigrationInterface {
 
@@ -33,6 +33,11 @@ export class CreateContent1638197238797 implements MigrationInterface {
                         isNullable: true
                     },
                     {
+                        name: 'items_id',
+                        type: 'uuid',
+                        isNullable: true,
+                    },
+                    {
                         name: 'created_at',
                         type: 'timestamp with time zone',
                         default: 'now()',
@@ -41,9 +46,18 @@ export class CreateContent1638197238797 implements MigrationInterface {
                         name: 'updated_at',
                         type: 'timestamp with time zone',
                         default: 'now()',
-                    }
-                ]
-
+                    },
+                ],
+                foreignKeys: [
+                    {
+                        name: 'ContentItem',
+                        referencedTableName: 'items',
+                        referencedColumnNames: ['id'],
+                        columnNames: ['items_id'],
+                        onDelete: 'SET NULL',
+                        onUpdate: 'CASCADE',
+                    },
+                ],
             })
         );
     }

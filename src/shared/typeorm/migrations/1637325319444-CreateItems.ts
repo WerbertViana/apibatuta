@@ -23,10 +23,6 @@ export class CreateItems1637325319444 implements MigrationInterface {
                         type: 'varchar',
                     },
                     {
-                        name: 'content',
-                        type: 'int'
-                    },
-                    {
                         name: 'feed_id',
                         type: 'uuid',
                         isNullable: true,

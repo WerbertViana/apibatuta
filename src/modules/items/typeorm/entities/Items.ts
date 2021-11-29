@@ -1,10 +1,13 @@
 import Feed from '../../../feeds/typeorm/entities/Feed';
+import Content from '../../../content/typeorm/entitites/Content';
+
 import {
     Column,
     CreateDateColumn,
     Entity,
     JoinColumn,
     ManyToOne,
+    OneToMany,
     PrimaryGeneratedColumn,
     UpdateDateColumn,
   } from 'typeorm';
@@ -26,12 +29,14 @@ import {
     @Column()
     icon: string;
 
-    @Column("int4")
-    content: number;
-
     @ManyToOne(() => Feed, feed => feed.items)
     @JoinColumn({ name: 'feed_id' })
     feed: Feed;
+
+    @OneToMany(() => Content, item => item.items, {
+      cascade: true,
+    })
+    content: Content[];
 
     @CreateDateColumn()
     created_at: Date;

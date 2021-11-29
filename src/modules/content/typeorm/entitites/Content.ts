@@ -1,3 +1,5 @@
+import Items from '../../../items/typeorm/entities/Items';
+
 import {
     Column,
     CreateDateColumn,
@@ -22,6 +24,11 @@ import {
   
     @Column()
     video: string;
+
+    @ManyToOne(() => Items, items => items.content)
+    @JoinColumn({ name: 'items_id' })
+    items: Items;
+
   
     @CreateDateColumn()
     created_at: Date;
