@@ -15,6 +15,10 @@ export class CreateContent1638197238797 implements MigrationInterface {
                         default: 'uuid_generate_v4()',
                     },
                     {
+                        name: 'name',
+                        type: 'varchar',
+                    },
+                    {
                         name: 'image',
                         type: 'varchar',
                     },
