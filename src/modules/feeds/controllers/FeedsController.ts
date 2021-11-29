@@ -12,12 +12,11 @@ export default class FeedsController {
  
   public async create(request: Request, response: Response): Promise<Response> {
         
-    const {lesson, progress, show_feed, show_lesson} = request.body;
+    const {lesson, progress, show_lesson} = request.body;
     
     const createFeed = new CreateFeedService();
 
     const feed = await createFeed.execute({
-      show_feed,
       show_lesson,
       lesson,
       progress

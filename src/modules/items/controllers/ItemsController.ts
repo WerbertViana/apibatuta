@@ -1,5 +1,6 @@
 import ListItemsService from '@modules/items/services/ListItemsService';
 import { Request, Response } from 'express';
+import ActiveItemService from '../services/ActiveItemService';
 import CreateItemService from '../services/CreateItemService';
 import DeleteItemsService from '../services/DeleteItemsService';
 import ShowItemService from '../services/ShowItemService';
@@ -67,6 +68,18 @@ export default class ItemsController {
       title,
       icon,
       content
+    });
+
+    return response.json(feed);
+  }
+
+  public async active (request: Request, response: Response): Promise<Response> {
+    const {id} = request.params;
+
+    const updateItem = new ActiveItemService();
+
+    const feed = await updateItem.execute({
+      id
     });
 
     return response.json(feed);

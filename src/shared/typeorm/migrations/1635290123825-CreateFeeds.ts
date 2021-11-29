@@ -27,10 +27,6 @@ export class CreateFeeds1635290123825 implements MigrationInterface {
                         type: 'boolean'
                     },
                     {
-                        name: 'show_feed',
-                        type: 'boolean'
-                    },
-                    {
                         name: 'created_at',
                         type: 'timestamp with time zone',
                         default: 'now()',

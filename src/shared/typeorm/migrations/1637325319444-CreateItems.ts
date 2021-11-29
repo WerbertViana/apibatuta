@@ -32,6 +32,10 @@ export class CreateItems1637325319444 implements MigrationInterface {
                         isNullable: true,
                     },
                     {
+                        name: 'show_feed',
+                        type: 'boolean',
+                    },
+                    {
                         name: 'created_at',
                         type: 'timestamp with time zone',
                         default: 'now()',

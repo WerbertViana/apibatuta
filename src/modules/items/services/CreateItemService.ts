@@ -25,7 +25,8 @@ class CreateItemService {
       feed_id,
       title,
       icon,
-      content
+      content,
+      show_feed: false
     });
 
     await itemsRepository.save(item);

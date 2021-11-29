@@ -20,9 +20,6 @@ import {
     show_lesson: boolean;
 
     @Column("boolean")
-    show_feed: boolean;
-
-    @Column("boolean")
     progress: boolean;
 
     @OneToMany(() => Items, item => item.feed, {

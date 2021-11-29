@@ -19,6 +19,9 @@ import {
 
     @Column()
     feed_id: string;
+
+    @Column()
+    show_feed: boolean;
   
     @Column()
     icon: string;

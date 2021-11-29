@@ -61,4 +61,14 @@ itemsRouter.put(
     itemsController.update
 );
 
+itemsRouter.put(
+    '/ativar/:id',
+    celebrate({
+        [Segments.PARAMS]: {
+            id: Joi.string().uuid().required(),
+        }
+    }),
+    itemsController.active
+);
+
 export default itemsRouter;
