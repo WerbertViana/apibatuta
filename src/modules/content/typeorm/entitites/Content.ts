@@ -4,6 +4,8 @@ import {
     Column,
     CreateDateColumn,
     Entity,
+    JoinColumn,
+    ManyToOne,
     PrimaryGeneratedColumn,
     UpdateDateColumn,
   } from 'typeorm';
@@ -21,6 +23,9 @@ import {
   
     @Column()
     music: string;
+
+    @Column()
+    items_id: string;
   
     @Column()
     video: string;

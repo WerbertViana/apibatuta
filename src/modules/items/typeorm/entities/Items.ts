@@ -33,7 +33,7 @@ import {
     @JoinColumn({ name: 'feed_id' })
     feed: Feed;
 
-    @OneToMany(() => Content, item => item.items, {
+    @OneToMany(() => Content, content => content.items, {
       cascade: true,
     })
     content: Content[];
