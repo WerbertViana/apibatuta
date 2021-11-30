@@ -24,6 +24,14 @@ class ItemsRepository extends Repository<Items> {
     return item;
   }
 
+  public async findByContent(id: string): Promise<Items | undefined> {
+    const users = await this.findOne(id, {
+        relations: ['content'],
+    });
+
+    return users;
+  }
+
 }
 
 export default ItemsRepository;

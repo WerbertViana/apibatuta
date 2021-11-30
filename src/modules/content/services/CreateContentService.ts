@@ -4,33 +4,35 @@ import Content from '../typeorm/entitites/Content';
 import ContentRepository from '../typeorm/repositories/ContentRepository';
 
 interface IRequest {
+  name: string;
   image: string;
   music: string;
   video: string;
-  name: string;
+  items_id: string;
 }
 
-class CreateUserService {
-  public async execute({ image, music, video, name }: IRequest): Promise<Content> {
+class CreateContentService {
+  public async execute({ name, image, music, video, items_id }: IRequest): Promise<Content> {
     
     const contentRepository = getCustomRepository(ContentRepository);
-    const contentExist = await contentRepository.findByName(name);
-
-    if (contentExist) {
-      throw new AppError('Já existe um conteúdo cadastrado com mesmo nome. Favor tentar novamente!');
-    }
+    const ItemExists = await itemsRepository.findByTitle(title);
     
-    const content = contentRepository.create({  
-      name,
-      image,
-      music,
-      video
+
+    if (ItemExists) {
+      throw new AppError('Já existe uma item cadastrado com o mesmo nome');
+    }
+
+    const item = itemsRepository.create({  
+      feed_id,
+      title,
+      icon,
+      show_feed: false
     });
 
-    await contentRepository.save(content);
+    await itemsRepository.save(item);
 
-    return content;
+    return item;
   }
 }
 
-export default CreateUserService;
+export default CreateContentService;

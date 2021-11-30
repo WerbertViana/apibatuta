@@ -1,11 +1,11 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreateContent1638197238797 implements MigrationInterface {
+export class CreateItems1638300145327 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: 'content',
+                name: 'items',
                 columns: [
                     {
                         name: 'id',
@@ -15,27 +15,21 @@ export class CreateContent1638197238797 implements MigrationInterface {
                         default: 'uuid_generate_v4()',
                     },
                     {
-                        name: 'name',
+                        name: 'title',
                         type: 'varchar',
                     },
                     {
-                        name: 'image',
+                        name: 'icon',
                         type: 'varchar',
                     },
                     {
-                        name: 'music',
-                        type: 'varchar',
-                        isNullable: true
-                    },
-                    {
-                        name: 'video',
-                        type: 'varchar',
-                        isNullable: true
-                    },
-                    {
-                        name: 'items_id',
+                        name: 'feed_id',
                         type: 'uuid',
                         isNullable: true,
+                    },
+                    {
+                        name: 'show_feed',
+                        type: 'boolean',
                     },
                     {
                         name: 'created_at',
@@ -46,24 +40,25 @@ export class CreateContent1638197238797 implements MigrationInterface {
                         name: 'updated_at',
                         type: 'timestamp with time zone',
                         default: 'now()',
-                    },
+                    }
                 ],
                 foreignKeys: [
                     {
-                        name: 'ContentItem',
-                        referencedTableName: 'items',
+                        name: 'ItemFeed',
+                        referencedTableName: 'feeds',
                         referencedColumnNames: ['id'],
-                        columnNames: ['items_id'],
+                        columnNames: ['feed_id'],
                         onDelete: 'SET NULL',
                         onUpdate: 'CASCADE',
                     },
                 ],
+
             })
         );
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('content');
+        await queryRunner.dropTable('items');
     }
 
 }
