@@ -33,10 +33,10 @@ import {
     @JoinColumn({ name: 'feed_id' })
     feed: Feed;
 
-    @OneToMany(() => Content, content => content.items, {
+    /*@OneToMany(() => Content, content => content.items, {
       cascade: true,
     })
-    content: Content[];
+    content: Content[];*/
 
     @CreateDateColumn()
     created_at: Date;

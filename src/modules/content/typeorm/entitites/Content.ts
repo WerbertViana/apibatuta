@@ -30,9 +30,9 @@ import {
     @Column()
     video: string;
 
-    @ManyToOne(() => Items, items => items.content)
+    /*@ManyToOne(() => Items, items => items.content)
     @JoinColumn({ name: 'items_id' })
-    items: Items;
+    items: Items;*/
 
   
     @CreateDateColumn()

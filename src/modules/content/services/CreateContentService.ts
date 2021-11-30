@@ -13,25 +13,26 @@ interface IRequest {
 
 class CreateContentService {
   public async execute({ name, image, music, video, items_id }: IRequest): Promise<Content> {
-    
-    const contentRepository = getCustomRepository(ContentRepository);
-    const ItemExists = await itemsRepository.findByTitle(title);
-    
 
-    if (ItemExists) {
-      throw new AppError('Já existe uma item cadastrado com o mesmo nome');
+    const contentRepository = getCustomRepository(ContentRepository);
+    const ContentExists = await contentRepository.findByName(name);
+
+
+    if (ContentExists) {
+      throw new AppError('Já existe uma conteúdo cadastrado com o mesmo nome');
     }
 
-    const item = itemsRepository.create({  
-      feed_id,
-      title,
-      icon,
-      show_feed: false
+    const content = contentRepository.create({
+      name,
+      image,
+      music,
+      video,
+      items_id
     });
 
-    await itemsRepository.save(item);
+    await contentRepository.save(content);
 
-    return item;
+    return content;
   }
 }
 
