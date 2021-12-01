@@ -1,7 +1,7 @@
 import { getCustomRepository } from "typeorm";
 import FeedsRepository from "../typeorm/repositories/FeedsRepository";
 
-class ListAllFeedsService {
+class ListAllItemsService {
   public async execute(): Promise<Object | undefined> {
 
     const feedsRepository = getCustomRepository(FeedsRepository);
@@ -20,4 +20,4 @@ class ListAllFeedsService {
   }
 }
 
-export default ListAllFeedsService;
+export default ListAllItemsService;

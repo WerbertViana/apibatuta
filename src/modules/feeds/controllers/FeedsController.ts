@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import CreateFeedService from '../services/CreateFeedService';
 import DeleteFeedService from '../services/DeleteFeedService';
-import ListAllFeedsService from '../services/ListAllFeedsService';
+import ListAllFeedsService from '../services/ListAllItemsService';
 import ListFeedsService from '../services/ListFeedsService';
 import ListItemsService from '../services/ListItemsService';
 import ShowFeedService from '../services/ShowFeedService';

@@ -5,7 +5,7 @@ import questionsRouter from '@modules/questions/routes/questions.routes';
 import itemsRouter from '@modules/items/routes/items.routes';
 import alternativesRouter from '@modules/alternatives/routes/alternatives.routes';
 import contentRouter from '@modules/content/routes/content.routes';
-import feedsallRouter from '@modules/feeds/routes/feeds.all.routes';
+import feedsallRouter from '@modules/feeds/routes/feeds.allitems.routes';
 
 const routes = Router();
 
