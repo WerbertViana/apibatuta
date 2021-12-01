@@ -13,8 +13,7 @@ itemsRouter.post(
         },
         [Segments.BODY]: {
             title: Joi.string().required(),
-            icon: Joi.string().required(),
-            content: Joi.number().required(),
+            icon: Joi.string().required()
         },
     }),
     itemsController.create
@@ -33,6 +32,17 @@ itemsRouter.get(
         },
     }),
     itemsController.show
+);
+
+
+itemsRouter.get(
+    '/content/:id',
+    celebrate({
+        [Segments.PARAMS]: {
+            id: Joi.string().uuid().required()
+        },
+    }),
+    itemsController.content
 );
 
 itemsRouter.delete(

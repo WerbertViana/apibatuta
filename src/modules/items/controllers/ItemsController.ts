@@ -1,3 +1,4 @@
+import ListContentService from '../services/ListContentService'
 import ListItemsService from '@modules/items/services/ListItemsService';
 import { Request, Response } from 'express';
 import ActiveItemService from '../services/ActiveItemService';
@@ -10,19 +11,18 @@ import UpdateItemService from '../services/UpdateItemService';
 
 
 export default class ItemsController {
- 
+
   public async create(request: Request, response: Response): Promise<Response> {
-        
-    const {title, icon, content} = request.body;
-    const {feed_id} = request.params;
-    
+
+    const { title, icon } = request.body;
+    const { feed_id } = request.params;
+
     const createItem = new CreateItemService();
 
     const item = await createItem.execute({
-      feed_id,  
+      feed_id,
       title,
-      icon,
-      content
+      icon
     });
 
     return response.json(item);
@@ -41,7 +41,7 @@ export default class ItemsController {
 
     const showItem = new ShowItemService();
 
-    const item = await showItem.execute({id});
+    const item = await showItem.execute({ id });
 
     return response.json(item);
   }
@@ -51,38 +51,48 @@ export default class ItemsController {
 
     const deleteItems = new DeleteItemsService();
 
-    await deleteItems.execute({id});
+    await deleteItems.execute({ id });
 
     return response.json([]);
   }
 
   public async update(request: Request, response: Response): Promise<Response> {
-    const {title, icon, content} = request.body;
-    const {id, feed_id} = request.params;
+    const { title, icon } = request.body;
+    const { id, feed_id } = request.params;
 
     const updateItem = new UpdateItemService();
 
-    const feed = await updateItem.execute({
+    const items = await updateItem.execute({
       id,
       feed_id,
       title,
-      icon,
-      content
+      icon
     });
 
-    return response.json(feed);
+    return response.json(items);
   }
 
-  public async active (request: Request, response: Response): Promise<Response> {
-    const {id} = request.params;
+  public async active(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
 
     const updateItem = new ActiveItemService();
 
-    const feed = await updateItem.execute({
+    const items = await updateItem.execute({
       id
     });
 
-    return response.json(feed);
+    return response.json(items);
   }
-  
+
+  public async content(request: Request, response: Response): Promise<Response> {
+
+    const { id } = request.params;
+
+    const listContent = new ListContentService();
+
+    const items = await listContent.execute({ id });
+
+    return response.json(items);
+  }
+
 }

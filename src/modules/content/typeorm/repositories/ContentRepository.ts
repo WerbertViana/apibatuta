@@ -1,5 +1,5 @@
 import { EntityRepository, Repository } from 'typeorm';
-import Content from '../entitites/Content';
+import Content from '../entities/Content';
 
 @EntityRepository(Content)
 class ContentRepository extends Repository<Content> {
@@ -13,7 +13,7 @@ class ContentRepository extends Repository<Content> {
 
     return content;
   }
-  
+
 
   public async findById(id: string): Promise<Content | undefined> {
     const content = await this.findOne({

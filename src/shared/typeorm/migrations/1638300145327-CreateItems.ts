@@ -24,8 +24,7 @@ export class CreateItems1638300145327 implements MigrationInterface {
                     },
                     {
                         name: 'feed_id',
-                        type: 'uuid',
-                        isNullable: true,
+                        type: 'uuid'
                     },
                     {
                         name: 'show_feed',

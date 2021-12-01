@@ -34,8 +34,7 @@ export class CreateContent1638300231504 implements MigrationInterface {
                     },
                     {
                         name: 'items_id',
-                        type: 'uuid',
-                        isNullable: true,
+                        type: 'uuid'
                     },
                     {
                         name: 'created_at',

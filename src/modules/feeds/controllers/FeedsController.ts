@@ -9,11 +9,11 @@ import UpdateFeedService from '../services/UpdateFeedService';
 
 
 export default class FeedsController {
- 
+
   public async create(request: Request, response: Response): Promise<Response> {
-        
-    const {lesson, progress, show_lesson} = request.body;
-    
+
+    const { lesson, progress, show_lesson } = request.body;
+
     const createFeed = new CreateFeedService();
 
     const feed = await createFeed.execute({
@@ -38,7 +38,7 @@ export default class FeedsController {
 
     const showFeed = new ShowFeedService();
 
-    const feed = await showFeed.execute({id});
+    const feed = await showFeed.execute({ id });
 
     return response.json(feed);
   }
@@ -48,14 +48,14 @@ export default class FeedsController {
 
     const deleteUser = new DeleteFeedService();
 
-    await deleteUser.execute({id});
+    await deleteUser.execute({ id });
 
     return response.json([]);
   }
 
   public async update(request: Request, response: Response): Promise<Response> {
-    const {lesson, progress} = request.body;
-    const {id} = request.params;
+    const { lesson, progress } = request.body;
+    const { id } = request.params;
 
     const updateUser = new UpdateFeedService();
 
@@ -70,7 +70,7 @@ export default class FeedsController {
 
   public async items(request: Request, response: Response): Promise<Response> {
 
-    const {id} = request.params;
+    const { id } = request.params;
 
     const listItems = new ListItemsService();
 
@@ -80,5 +80,5 @@ export default class FeedsController {
 
     return response.json(feed);
   }
-  
+
 }
