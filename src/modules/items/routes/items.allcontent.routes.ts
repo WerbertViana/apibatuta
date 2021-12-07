@@ -6,7 +6,7 @@ const itemsController = new ItemsController();
 
 itemsallRouter.get(
     '/',
-    itemsController.content
+    itemsController.allcontent
 );
 
 export default itemsallRouter;
