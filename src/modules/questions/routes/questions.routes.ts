@@ -6,7 +6,7 @@ const questionsRouter = Router();
 const questionsController = new QuestionsController();
 
 questionsRouter.post(
-    '/items_id',
+    '/:items_id',
     celebrate({
         [Segments.PARAMS]: {
             items_id: Joi.string().uuid().required(),

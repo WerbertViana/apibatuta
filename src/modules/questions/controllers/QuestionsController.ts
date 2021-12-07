@@ -12,7 +12,8 @@ export default class QuestionsController {
  
   public async create(request: Request, response: Response): Promise<Response> {
         
-    const { name, correct_alternative, correct_option, levels, elo } = request.body;
+    const { name, correct_alternative, correct_option, levels, elo} = request.body;
+    const { items_id } = request.params;
     
     const createQuestion = new CreateQuestionService();
 
@@ -22,6 +23,7 @@ export default class QuestionsController {
         correct_option,
         levels,
         elo,
+        items_id
     });
 
     return response.json(question);
