@@ -11,6 +11,7 @@ import {
     PrimaryGeneratedColumn,
     UpdateDateColumn,
   } from 'typeorm';
+import Question from '../../../questions/typeorm/entities/Question';
   
   @Entity('items')
   class Items {
@@ -37,6 +38,11 @@ import {
       cascade: true,
     })
     content: Content[];
+
+    @OneToMany(() => Question, question => question.items, {
+      cascade: true,
+    })
+    question: Question[];
 
     @CreateDateColumn()
     created_at: Date;

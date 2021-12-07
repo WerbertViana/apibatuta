@@ -6,8 +6,11 @@ const questionsRouter = Router();
 const questionsController = new QuestionsController();
 
 questionsRouter.post(
-    '/',
+    '/items_id',
     celebrate({
+        [Segments.PARAMS]: {
+            items_id: Joi.string().uuid().required(),
+        },
         [Segments.BODY]: {
             name: Joi.string().required(),
             correct_alternative: Joi.string().required(),

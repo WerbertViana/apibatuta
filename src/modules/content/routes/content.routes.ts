@@ -8,7 +8,7 @@ const contentController = new ContentController();
 contentRouter.post(
     '/:items_id',
     celebrate({
-        [Segments.BODY]: {
+        [Segments.PARAMS]: {
             items_id: Joi.string().uuid().required(),
         },
         [Segments.BODY]: {

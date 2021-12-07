@@ -27,6 +27,10 @@ export class CreateQuestions1637292786161 implements MigrationInterface {
                         type: 'varchar',
                     },
                     {
+                        name: 'items_id',
+                        type: 'uuid'
+                    },
+                    {
                         name: 'levels',
                         type: 'varchar',
                     },
@@ -45,8 +49,17 @@ export class CreateQuestions1637292786161 implements MigrationInterface {
                         type: 'timestamp with time zone',
                         default: 'now()',
                     }
-                ]
-
+                ],
+                foreignKeys: [
+                    {
+                        name: 'QuestionItem',
+                        referencedTableName: 'items',
+                        referencedColumnNames: ['id'],
+                        columnNames: ['items_id'],
+                        onDelete: 'SET NULL',
+                        onUpdate: 'CASCADE',
+                    },
+                ],
             })
         );
     }

@@ -9,10 +9,11 @@ interface IRequest {
     correct_option: string;
     levels: string;
     elo: string;
+    items_id: string;
 }
 
 class CreateQuestionService {
-  public async execute({ name, correct_alternative, correct_option, levels, elo }: IRequest): Promise<Question> {
+  public async execute({ name, correct_alternative, correct_option, levels, elo, items_id }: IRequest): Promise<Question> {
     
     const questionsRepository = getCustomRepository(QuestionsRepository);
     const questionExists = await questionsRepository.findByName(name)
@@ -28,6 +29,7 @@ class CreateQuestionService {
         correct_option,
         levels,
         elo,
+        items_id
     });
 
     await questionsRepository.save(question);
