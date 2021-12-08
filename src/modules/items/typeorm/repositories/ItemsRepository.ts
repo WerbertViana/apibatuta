@@ -25,11 +25,19 @@ class ItemsRepository extends Repository<Items> {
   }
 
   public async findByContent(id: string): Promise<Items | undefined> {
-    const users = await this.findOne(id, {
+    const content = await this.findOne(id, {
         relations: ['content'],
     });
 
-    return users;
+    return content;
+  }
+
+  public async findByQuestion(id: string): Promise<Items | undefined> {
+    const questions = await this.findOne(id, {
+        relations: ['question'],
+    });
+
+    return questions;
   }
 
 }

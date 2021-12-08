@@ -7,6 +7,7 @@ import DeleteItemsService from '../services/DeleteItemsService';
 import ShowItemService from '../services/ShowItemService';
 import UpdateItemService from '../services/UpdateItemService';
 import ListAllContentService from '../services/ListAllContentService';
+import ListQuestionService from '../services/ListQuestionService';
 
 
 
@@ -102,6 +103,17 @@ export default class ItemsController {
     const content = await listContent.execute();
 
     return response.json(content);
+  }
+
+  public async question(request: Request, response: Response): Promise<Response> {
+
+    const { id } = request.params;
+
+    const listQuestion = new ListQuestionService();
+
+    const questions = await listQuestion.execute({ id });
+
+    return response.json(questions);
   }
 
 }
