@@ -25,17 +25,17 @@ class ListQuestionAlternative {
         a.id
         );
 
-        let teste = [];
+        let qalternative = [];
 
         const questionsRepository = getCustomRepository(QuestionsRepository);
         
         if(alternativesIDs) {
             for(let i=0; i<alternativesIDs.length; i++) {
-                teste.push(await questionsRepository.findByAlternatives(alternativesIDs[i]))
+                qalternative.push(await questionsRepository.findByAlternatives(alternativesIDs[i]))
             }
         }
         
-        return teste;
+        return qalternative;
     }
 }
 
