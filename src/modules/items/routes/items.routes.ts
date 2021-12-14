@@ -55,6 +55,16 @@ itemsRouter.get(
     itemsController.question
 );
 
+itemsRouter.get(
+    '/questions/alternatives/:id',
+    celebrate({
+        [Segments.PARAMS]: {
+            id: Joi.string().uuid().required()
+        },
+    }),
+    itemsController.questionalternative
+);
+
 itemsRouter.delete(
     '/:id',
     celebrate({

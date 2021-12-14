@@ -8,6 +8,7 @@ import ShowItemService from '../services/ShowItemService';
 import UpdateItemService from '../services/UpdateItemService';
 import ListAllContentService from '../services/ListAllContentService';
 import ListQuestionService from '../services/ListQuestionService';
+import ListQuestionAlternative from '../services/ListQuestionAlternative';
 
 
 
@@ -110,6 +111,17 @@ export default class ItemsController {
     const { id } = request.params;
 
     const listQuestion = new ListQuestionService();
+
+    const questions = await listQuestion.execute({ id });
+
+    return response.json(questions);
+  }
+
+  public async questionalternative(request: Request, response: Response): Promise<Response> {
+
+    const { id } = request.params;
+
+    const listQuestion = new ListQuestionAlternative();
 
     const questions = await listQuestion.execute({ id });
 
