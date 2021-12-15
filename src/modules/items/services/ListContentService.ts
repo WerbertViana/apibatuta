@@ -10,12 +10,12 @@ interface Iproduct {
 
 class ListContentService {
 
-    public async execute({ id }: Iproduct): Promise<Items | undefined> {
+    public async execute({ id }: Iproduct): Promise<Object | undefined> {
 
         const itemsRepository = getCustomRepository(ItemsRepository);
         const items = await itemsRepository.findByContent(id);
-       
-        return items;
+        const resp = items?.content;
+        return resp;
     }
 }
 
