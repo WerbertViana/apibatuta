@@ -7,6 +7,7 @@ import alternativesRouter from '@modules/alternatives/routes/alternatives.routes
 import contentRouter from '@modules/content/routes/content.routes';
 import feedsallRouter from '@modules/feeds/routes/feeds.allitems.routes';
 import itemsallRouter from '@modules/items/routes/items.allcontent.routes';
+import sessionsRouter from '@modules/users/routes/sessions.routes';
 
 const routes = Router();
 
@@ -18,6 +19,7 @@ routes.use('/alternatives', alternativesRouter);
 routes.use('/content', contentRouter);
 routes.use('/allfeeds', feedsallRouter);
 routes.use('/allcontent', itemsallRouter);
+routes.use('/sessions', sessionsRouter);
 
 routes.get('/', (request, response) => {
     return response.json({ message: 'Conectado!' });

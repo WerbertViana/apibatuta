@@ -30,6 +30,9 @@ import Question from '../../../questions/typeorm/entities/Question';
     @Column()
     icon: string;
 
+    @Column()
+    position: number;
+
     @ManyToOne(() => Feed, feed => feed.items)
     @JoinColumn({ name: 'feed_id' })
     feed: Feed;

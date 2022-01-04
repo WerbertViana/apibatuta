@@ -17,7 +17,7 @@ export default class ItemsController {
 
   public async create(request: Request, response: Response): Promise<Response> {
 
-    const { title, icon } = request.body;
+    const { title, icon, position } = request.body;
     const { feed_id } = request.params;
 
     const createItem = new CreateItemService();
@@ -25,7 +25,8 @@ export default class ItemsController {
     const item = await createItem.execute({
       feed_id,
       title,
-      icon
+      icon,
+      position
     });
 
     return response.json(item);
@@ -60,7 +61,7 @@ export default class ItemsController {
   }
 
   public async update(request: Request, response: Response): Promise<Response> {
-    const { title, icon } = request.body;
+    const { title, icon, position } = request.body;
     const { id, feed_id } = request.params;
 
     const updateItem = new UpdateItemService();
@@ -69,7 +70,8 @@ export default class ItemsController {
       id,
       feed_id,
       title,
-      icon
+      icon,
+      position
     });
 
     return response.json(items);

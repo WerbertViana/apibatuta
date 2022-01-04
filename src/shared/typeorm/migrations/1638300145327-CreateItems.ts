@@ -27,6 +27,10 @@ export class CreateItems1638300145327 implements MigrationInterface {
                         type: 'uuid'
                     },
                     {
+                        name: 'position',
+                        type: 'int'
+                    },
+                    {
                         name: 'show_feed',
                         type: 'boolean',
                     },

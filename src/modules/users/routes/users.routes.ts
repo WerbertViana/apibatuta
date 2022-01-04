@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { celebrate, Joi, Segments } from 'celebrate';
 import UsersController from '../controllers/UsersController';
+import isAuthenticated from '../../../shared/http/middlewares/isAuthenticated';
 
 
 
@@ -15,7 +16,7 @@ usersRouter.post(
     celebrate({
         [Segments.BODY]: {
             nome: Joi.string().required(),
-            email: Joi.string().required(),
+            email: Joi.string().email().required(),
             senha: Joi.string().required(),
         },
     }),

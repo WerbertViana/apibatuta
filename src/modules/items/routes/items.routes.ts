@@ -13,7 +13,8 @@ itemsRouter.post(
         },
         [Segments.BODY]: {
             title: Joi.string().required(),
-            icon: Joi.string().required()
+            icon: Joi.string().required(),
+            position: Joi.number().required()
         },
     }),
     itemsController.create
@@ -85,7 +86,7 @@ itemsRouter.put(
         [Segments.BODY]: {
             title: Joi.string().required(),
             icon: Joi.string().required(),
-            content: Joi.number().required(),
+            position: Joi.number().required()
         },
     }),
     itemsController.update

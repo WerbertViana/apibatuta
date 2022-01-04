@@ -8,10 +8,11 @@ interface IRequest {
     feed_id: string;
     title: string;
     icon: string;
+    position: number;
 }
 
 class UpdateItemService {
-  public async execute({ id, feed_id, title, icon }: IRequest): Promise<Items> {
+  public async execute({ id, feed_id, title, icon, position }: IRequest): Promise<Items> {
 
     const itemsRepository = getCustomRepository(ItemsRepository);
     const itemsExists = await itemsRepository.findByTitle(title);
@@ -29,7 +30,8 @@ class UpdateItemService {
     item.feed_id = feed_id;
     item.title = title;
     item.icon = icon;
-
+    item.position = position;
+    
     await itemsRepository.save(item);
 
     return item;
