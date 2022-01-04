@@ -2,6 +2,7 @@ import AppError from '../../../shared/errors/AppError';
 import { getCustomRepository } from 'typeorm';
 import User from '../typeorm/entities/User';
 import UsersRepository from '../typeorm/repositories/UsersRepository';
+import {hash} from 'bcryptjs';
 
 interface IRequest {
   nome: string;
@@ -24,11 +25,13 @@ class CreateUserService {
       throw new AppError('Já existe um email cadastrado com mesmo nome. Favor tentar novamente!');
     }
 
+    const hashedSenha = await hash(senha, 8);
+
     
     const user = usersRepository.create({  
       nome,
       email,
-      senha,
+      senha: hashedSenha,
       vida: 3,
       xp: 0,
       batutas: 0,
