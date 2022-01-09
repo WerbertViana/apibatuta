@@ -13,19 +13,6 @@ class ActiveItemService {
     const itemsRepository = getCustomRepository(ItemsRepository);
     const allitems = await itemsRepository.find();
 
-    // let j = 0;
-
-    // for (let i=0; i< allitems.length; i++) {
-    //   if(allitems[i].id == id) {
-    //     j = i;
-    //     break;
-    //   }
-    // }
-
-    // allitems[j].show_feed = true;
-
-    // console.log(j);
-
     const item = await itemsRepository.findById(id);
     
 
@@ -33,7 +20,7 @@ class ActiveItemService {
       throw new AppError('Item não encontrado.');
     }
 
-    item.show_feed = false;
+    item.show_feed = true;
 
     await itemsRepository.save(item);
 

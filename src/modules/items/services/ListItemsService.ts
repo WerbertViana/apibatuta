@@ -6,9 +6,20 @@ class ListItemsService {
   public async execute(): Promise<Items[]> {
     const itemsRepository = getCustomRepository(ItemsRepository);
 
-    const items = itemsRepository.find();
+    const items = await itemsRepository.find();
 
-    return items;
+    const resul: any[] = [];
+    let j =1;
+    while (j < items.length + 1) {
+      for (let i = 0; i < items.length; i++) {
+        if (items[i].position == j) {
+          resul.push(items[i]);
+          j++;
+        }
+      }
+    }
+
+    return resul;
   }
 }
 
