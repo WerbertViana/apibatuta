@@ -8,18 +8,24 @@ class ListItemsService {
 
     const items = await itemsRepository.find();
 
-    const resul: any[] = [];
-    let j =1;
-    while (j < items.length + 1) {
-      for (let i = 0; i < items.length; i++) {
-        if (items[i].position == j) {
-          resul.push(items[i]);
-          j++;
-        }
-      }
-    }
+    // const resul = [];
+    // let j =1;
+    // while (j < items.length + 1) {
+    //   for (let i = 0; i < items.length; i++) {
+    //     if (items[i].position == j) {
+    //       resul.push(items[i]);
+    //       j++;
+    //     }
+    //   }
+    // }
 
-    return resul;
+    items.sort(function (a, b) {
+      if (a.position < b.position) return -1;
+      if (a.position > b.position) return 1;
+      return 0;
+    })
+
+    return items;
   }
 }
 
