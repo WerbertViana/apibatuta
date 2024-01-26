@@ -7,6 +7,8 @@
 
 * O diferencial do BATUTA está na abordagem lúdica e inovadora da gamificação, que motiva e estimula o aprendizado, proporcionando uma experiência educacional envolvente.
   
+![Imagens da aplicação](https://drive.google.com/file/d/1z-pbzoOSxdAk0lui3_zGv1iZHUBN5ts2/view?usp=sharing)
+  
 # Batuta - Backend
 O Back-End teve sua implementação realizada em Node JS juntamente com o uso das tecnologias do Typescript e TypeORM. Para os testes de requisição da API foi utilizado o Insomnia. 
 
