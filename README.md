@@ -11,6 +11,9 @@
 
 # Batuta - Backend
 * O Back-End teve sua implementação realizada em Node JS juntamente com o uso das tecnologias do Typescript e TypeORM. Para os testes de requisição da API foi utilizado o Insomnia.
+
+<img src="src/assets/insomnia.jpg"> </image>
+
   
 # Arquitetura da API
 * O padrão de arquitetura de software escolhido foi o RESTful, juntamente com a estrutura de acesso ao banco de dados estabelecida pelo TypeORM.
