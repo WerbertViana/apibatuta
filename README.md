@@ -29,3 +29,6 @@
    
 # Documentações
 * Google Drive: https://drive.google.com/drive/folders/16pzUi5dBZzBNEeTaJ1ZWaqkdO2dMC76z?usp=sharing
+
+https://github.com/werbertviana/apibatuta/assets/84457740/dab922c6-e3bf-4285-bb86-4001f7a51517
+
