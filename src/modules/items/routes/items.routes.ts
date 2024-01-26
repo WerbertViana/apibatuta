@@ -102,4 +102,14 @@ itemsRouter.put(
     itemsController.active
 );
 
+itemsRouter.put(
+    '/desativar/:id',
+    celebrate({
+        [Segments.PARAMS]: {
+            id: Joi.string().uuid().required(),
+        }
+    }),
+    itemsController.disable
+);
+
 export default itemsRouter;

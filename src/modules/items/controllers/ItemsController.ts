@@ -9,6 +9,7 @@ import UpdateItemService from '../services/UpdateItemService';
 import ListAllContentService from '../services/ListAllContentService';
 import ListQuestionService from '../services/ListQuestionService';
 import ListQuestionAlternative from '../services/ListQuestionAlternative';
+import DisableItemService from '../services/DisableItemService';
 
 
 
@@ -81,6 +82,18 @@ export default class ItemsController {
     const { id } = request.params;
 
     const updateItem = new ActiveItemService();
+
+    const items = await updateItem.execute({
+      id
+    });
+
+    return response.json(items);
+  }
+
+  public async disable(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+
+    const updateItem = new DisableItemService();
 
     const items = await updateItem.execute({
       id
