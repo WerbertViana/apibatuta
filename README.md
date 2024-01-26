@@ -25,5 +25,7 @@
 4. Express
 5. Docker
    
+<img src="src/assets/Tec.jpg"> </image>
+   
 # Documentações
 * Google Drive: https://drive.google.com/drive/folders/16pzUi5dBZzBNEeTaJ1ZWaqkdO2dMC76z?usp=sharing
